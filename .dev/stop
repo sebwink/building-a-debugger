@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+PROJECT=$(cat $SCRIPTPATH/project)
+CONTAINER_NAME=$PROJECT-dev
+
+if [[ $(docker ps -f name=$CONTAINER_NAME | wc -l) -eq "2" ]]; then
+  docker stop $CONTAINER_NAME
+fi

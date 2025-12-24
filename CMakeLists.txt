@@ -1,0 +1,54 @@
+cmake_minimum_required(VERSION 3.21)
+
+# Build options (must be before project() for vcpkg feature detection)
+option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+option(AIDBG_BUILD_CLI "Build command-line interface" ON)
+option(AIDBG_BUILD_TESTS "Build tests" ON)
+
+# Configure vcpkg manifest features based on build options
+set(VCPKG_MANIFEST_FEATURES "")
+if(AIDBG_BUILD_CLI)
+    list(APPEND VCPKG_MANIFEST_FEATURES "cli")
+endif()
+if(AIDBG_BUILD_TESTS)
+    list(APPEND VCPKG_MANIFEST_FEATURES "test")
+endif()
+
+project(libaidbg 
+    VERSION 0.0.42
+    DESCRIPTION "AI-native debugger"
+    LANGUAGES CXX
+)
+
+# C++20 standard requirement
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# vcpkg integration
+if(DEFINED CMAKE_TOOLCHAIN_FILE)
+    message(STATUS "Using vcpkg toolchain: ${CMAKE_TOOLCHAIN_FILE}")
+endif()
+
+# Include directories
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# Add subdirectories
+add_subdirectory(src)
+
+if(AIDBG_BUILD_CLI)
+    add_subdirectory(cli)
+endif()
+
+if(AIDBG_BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(test)
+endif()
+
+# Installation
+include(GNUInstallDirs)
+install(DIRECTORY include/aidbg
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    FILES_MATCHING PATTERN "*.hpp"
+)

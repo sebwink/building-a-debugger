@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+PROJECT=$(cat $SCRIPTPATH/project)
+IMAGE=sebwink/$PROJECT:local
+CONTAINER_NAME=$PROJECT-dev
+
+if [[ $(docker images -f reference=$IMAGE | wc -l) -ne "2" ]]; then
+  cd $SCRIPTPATH
+  make
+fi	
+
+if [[ $(docker ps -f name=$CONTAINER_NAME | wc -l) -eq "2" ]]; then
+  docker exec -it $@ --env DISPLAY=$DISPLAY $CONTAINER_NAME tmux a
+elif [[ $(docker ps -a -f name=$CONTAINER_NAME | wc -l) -eq "2" ]]; then
+  docker start -i $CONTAINER_NAME
+else
+  docker run --name $CONTAINER_NAME --network=host  -it $@ -v $SCRIPTPATH/..:/home/dev/code -v $HOME/.ssh:/home/dev/.ssh $IMAGE tmuxp load .dev/layout.yaml
+fi

@@ -1,0 +1,3 @@
+session_name: libweaviate
+windows:
+  - window_name: root

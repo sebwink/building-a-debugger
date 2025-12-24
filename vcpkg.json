@@ -1,0 +1,26 @@
+{
+  "name": "libaidb",
+  "version-string": "0.0.42",
+  "builtin-baseline": "5d57f5a0a5469a23e005fc79a7c1814ab4fc967e",
+  "dependencies": [
+    {
+      "name": "libedit",
+      "version>=": "2024-08-08"
+    },
+    {
+      "name": "cli11",
+      "version>=": "2.6.1"
+    }
+  ],
+  "features": {
+    "test": {
+      "description": "libaidb tests",
+      "dependencies": [
+        {
+          "name": "catch2",
+          "version>=": "3.11.0"
+        }
+      ]
+    }
+  }
+}
