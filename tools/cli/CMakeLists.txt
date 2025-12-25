@@ -6,8 +6,9 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(libedit REQUIRED IMPORTED_TARGET libedit)
 
 # CLI executable
+file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 add_executable(bad_cli
-    main.cpp
+    ${SOURCES}
 )
 
 target_link_libraries(bad_cli
