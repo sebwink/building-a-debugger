@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include <aidbg/aidbg.hpp>
+#include <dbg/dbg.hpp>
 
 int main() {
-  std::cout << aidbg::get_message() << std::endl;
+  std::cout << dbg::get_message() << std::endl;
   return 0;
 }

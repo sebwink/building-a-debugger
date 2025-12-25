@@ -9,21 +9,21 @@ find_package(Catch2 CONFIG REQUIRED)
 
 file(GLOB_RECURSE TEST_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 
-add_executable(aidbg_tests
+add_executable(dbg_tests
     ${TEST_SOURCES}
 )
 
-target_include_directories(aidbg_tests
+target_include_directories(dbg_tests
     PRIVATE
         ${CMAKE_SOURCE_DIR}
 )
 
-target_link_libraries(aidbg_tests
+target_link_libraries(dbg_tests
     PRIVATE
-        aidbg::aidbg
+        dbg::dbg
         Catch2::Catch2WithMain
 )
 
 include(CTest)
 include(Catch)
-catch_discover_tests(aidbg_tests)
+catch_discover_tests(dbg_tests)
