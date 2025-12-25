@@ -5,7 +5,7 @@
   "dependencies": [],
   "features": {
     "test": {
-      "description": "libaidb tests",
+      "description": "AIDBG TESTS",
       "dependencies": [
         {
           "name": "catch2",
