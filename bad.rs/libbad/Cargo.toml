@@ -1,0 +1,10 @@
+[package]
+name = "libbad"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+description = "Building a debugger - Rust port of C++ libbad"
+
+[dependencies]
+# None needed

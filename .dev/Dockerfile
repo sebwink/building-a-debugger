@@ -70,6 +70,8 @@ RUN echo ". /home/dev/.zshrc && npm install -g @google/gemini-cli" | zsh
 RUN curl -fsSL https://gh.io/copilot-install | bash
 RUN echo ". /home/dev/.zshrc && npm install -g @google/jules" | zsh
 
+RUN rustup component add rust-analyzer
+
 USER root
 RUN apt install libtool -y
 USER dev
