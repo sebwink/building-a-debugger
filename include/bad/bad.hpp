@@ -1,6 +1,6 @@
 #include <string>
 
-namespace dbg {
+namespace bad {
 
 std::string get_message();
 

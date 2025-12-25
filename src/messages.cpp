@@ -2,8 +2,8 @@
 
 #include <string>
 
-namespace dbg::messages {
+namespace bad::messages {
 
-std::string get_message() { return "DBG."; }
+std::string get_message() { return "BAD."; }
 
-} // namespace dbg::messages
+} // namespace bad::messages

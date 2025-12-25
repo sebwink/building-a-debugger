@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include <dbg/dbg.hpp>
+#include <bad/bad.hpp>
 
 int main() {
-  std::cout << dbg::get_message() << std::endl;
+  std::cout << bad::get_message() << std::endl;
   return 0;
 }

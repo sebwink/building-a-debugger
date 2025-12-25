@@ -6,23 +6,23 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(libedit REQUIRED IMPORTED_TARGET libedit)
 
 # CLI executable
-add_executable(dbg_cli
+add_executable(bad_cli
     main.cpp
 )
 
-target_link_libraries(dbg_cli
+target_link_libraries(bad_cli
     PRIVATE
-        dbg::dbg
+        bad::bad
         CLI11::CLI11
         PkgConfig::libedit
 )
 
-set_target_properties(dbg_cli PROPERTIES
-    OUTPUT_NAME dbg
+set_target_properties(bad_cli PROPERTIES
+    OUTPUT_NAME bad
 )
 
 # Installation
 include(GNUInstallDirs)
-install(TARGETS dbg_cli
+install(TARGETS bad_cli
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )

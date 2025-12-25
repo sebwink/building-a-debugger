@@ -4,11 +4,11 @@ cmake_minimum_required(VERSION 3.21)
 
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 
-add_library(dbg
+add_library(bad
     ${SOURCES}
 )
 
-target_include_directories(dbg
+target_include_directories(bad
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
@@ -16,18 +16,18 @@ target_include_directories(dbg
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-#target_link_libraries(dbg
+#target_link_libraries(bad
 #  PRIVATE
 #    PkgConfig::libedit
 #)
 
-set_target_properties(dbg PROPERTIES
+set_target_properties(bad PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION_MAJOR}
-    OUTPUT_NAME dbg
+    OUTPUT_NAME bad
 )
 
-add_library(dbg::dbg ALIAS dbg)
+add_library(bad::bad ALIAS bad)
 
 # ============================================================================
 # Installation
@@ -35,16 +35,16 @@ add_library(dbg::dbg ALIAS dbg)
 
 include(GNUInstallDirs)
 
-install(TARGETS dbg
-    EXPORT dbgTargets
+install(TARGETS bad
+    EXPORT badTargets
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 )
 
-install(EXPORT dbgTargets
-    FILE dbgTargets.cmake
-    NAMESPACE dbg::
-    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/dbg
+install(EXPORT badTargets
+    FILE badTargets.cmake
+    NAMESPACE bad::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/bad
 )

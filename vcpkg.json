@@ -1,11 +1,11 @@
 {
-  "name": "libdbg",
+  "name": "libbad",
   "version-string": "0.0.42",
   "builtin-baseline": "5d57f5a0a5469a23e005fc79a7c1814ab4fc967e",
   "dependencies": [],
   "features": {
     "test": {
-      "description": "DBG TESTS",
+      "description": "BAD TESTS",
       "dependencies": [
         {
           "name": "catch2",
@@ -14,7 +14,7 @@
       ]
     },
     "cli": {
-      "description": "DBG CLI",
+      "description": "BAD CLI",
       "dependencies": [
         {
           "name": "libedit",
