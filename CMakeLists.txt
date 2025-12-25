@@ -16,7 +16,7 @@ endif()
 
 project(libbad
     VERSION 0.0.42
-    DESCRIPTION "AI-native debugger"
+    DESCRIPTION "Building a debugger"
     LANGUAGES CXX
 )
 
