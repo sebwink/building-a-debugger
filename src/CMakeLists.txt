@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 3.21)
 
 # Forced re-configuration for GLOB
-# Find dependencies
-find_package(PkgConfig REQUIRED)
-pkg_check_modules(libedit REQUIRED IMPORTED_TARGET libedit)
 
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 
@@ -19,10 +16,10 @@ target_include_directories(aidbg
         ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(aidbg
-  PRIVATE
-    PkgConfig::libedit
-)
+#target_link_libraries(aidbg
+#  PRIVATE
+#    PkgConfig::libedit
+#)
 
 set_target_properties(aidbg PROPERTIES
     VERSION ${PROJECT_VERSION}

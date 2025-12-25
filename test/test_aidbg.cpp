@@ -3,6 +3,7 @@
 #include <aidbg/aidbg.hpp>
 
 TEST_CASE("Check message") {
-   std::string message = aidbg::get_message();
-   CHECK(message == "AIDBG.");
+  std::string expected_message = "AIDBG.";
+  std::string message = aidbg::get_message();
+  CHECK(message == expected_message);
 }

@@ -3,8 +3,6 @@
 
 namespace aidbg {
 
-  std::string get_message() {
-    return aidbg::messages::get_message();
-  }
+std::string get_message() { return aidbg::messages::get_message(); }
 
-}
+} // namespace aidbg
