@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 
 # Build options (must be before project() for vcpkg feature detection)
-option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 option(BAD_BUILD_CLI "Build command-line interface" ON)
 option(BAD_BUILD_TESTS "Build tests" ON)
 
@@ -25,6 +25,11 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+if(NOT BUILD_SHARED_LIBS)
+  message(STATUS "Building shared libraries")
+  set(CMAKE_EXE_LINKER_FLAGS "-static")
+endif()
 
 # vcpkg integration
 if(DEFINED CMAKE_TOOLCHAIN_FILE)
